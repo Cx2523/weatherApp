@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app='weatherApp'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="foundation-6.2.3-custom/css/foundation.css" rel="stylesheet">
+  </head>
+  <body class="bodyBackground" ng-controller="weatherCTRL">
+    <section class="main-container">
+
+    <h1>Your current location and temp:</h1>
+    <div><span>City: </span> {{city}}
+    <span>IP address:  </span> {{ipAddress}}
+    <div><span>Temperature: </span> {{weather.data.main.temp}} Farenheit <br>
+          <span>Pressure: </span> {{weather.data.main.pressure}} <br>
+          <span>Humidity: </span> {{weather.data.main.humidity}} <br>
+          <span>Wind Speed: </span> {{weather.data.wind.speed}} <br>
+          <span>Chance of Rain: </span> {{weather.data.rain['3h']}} <br>
+    </div>
+    </div>
+    <h2 class="subheader">Enter a new city:</h2>
+    <form ng-submit="submitNewCity()">
+      <input type="text" ng-model="input">
+      <input class="button primary" type="submit">
+    </form>
+    <section ng-show="showNewCity">
+      <div><span>Temperature: </span> {{inputCityWeather.data.main.temp}}<br>
+          <span>Pressure: </span> {{inputCityWeather.data.main.pressure}}<br>
+          <span>Humidity: </span> {{inputCityWeather.data.main.humidity}}<br>
+          <span>Wind Speed: </span> {{inputCityWeather.data.wind.speed}}<br>
+          <span>Chance of Rain: </span> {{inputCityWeather.data.rain['3h']}}
+      </div>
+  </section>
+  </section>
+
+
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers/weatherCTRL.js"></script>
+  <script src="app/services/locationSVC.js"></script>
+  <script src="app/services/weatherSVC.js"></script>
+  </body>
+</html>
